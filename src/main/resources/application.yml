@@ -1,2 +1,16 @@
-server.port: 8082
+server.port: 8081
+spring:
+  h2:
+    console.enabled: true
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+  jpa:
+    # 콘솔에 쿼리 출력
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+      # MySQL 문법 적용
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
