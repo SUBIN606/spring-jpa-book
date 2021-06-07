@@ -2,19 +2,28 @@ package book.example.board.service;
 
 import book.example.board.domain.posts.Posts;
 import book.example.board.domain.posts.PostsRepository;
+import book.example.board.web.dto.PostsListResponseDto;
 import book.example.board.web.dto.PostsResponseDto;
 import book.example.board.web.dto.PostsSaveRequestDto;
 import book.example.board.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class PostsService {
 
     private final PostsRepository postsRepository;
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new).collect(Collectors.toList());
+    }
 
     @Transactional
     public Long save(PostsSaveRequestDto requestDto) {
