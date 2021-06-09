@@ -1,5 +1,9 @@
 server.port: 8081
 spring:
+  profiles:
+    group:
+      local:
+        - oauth
   h2:
     console.enabled: true
   datasource:
