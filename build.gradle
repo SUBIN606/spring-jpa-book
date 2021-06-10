@@ -26,6 +26,9 @@ dependencies {
 	/* OAuth2 */
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 
+	/* session을 DB에 저장하기 위함 */
+	implementation 'org.springframework.session:spring-session-jdbc'
+
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
